@@ -1,0 +1,20 @@
+:root {
+    --primary: #0a192f; /* Azul escuro */
+    --secondary: #64ffda; /* Verde-água */
+    --light: #ccd6f6; /* Azul claro */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--light);
+    background: var(--primary);
+}
+
+.hero {
+    text-align: center;
+    padding: 8rem 0;
+    background: linear-gradient(135deg, var(--primary) 0%, #020c1b 100%);
+}
+
+/* Personalize cores, fontes e espaçamentos aqui */
