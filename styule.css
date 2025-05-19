@@ -1,20 +1,327 @@
+/* Variáveis de cor */
 :root {
-    --primary: #0a192f; /* Azul escuro */
-    --secondary: #64ffda; /* Verde-água */
-    --light: #ccd6f6; /* Azul claro */
+    --primary: #0a192f; /* Azul marinho escuro */
+    --secondary: #64ffda; /* Ciano brilhante */
+    --dark: #020c1b; /* Preto azulado */
+    --light: #ccd6f6; /* Azul claro para texto */
+    --accent: #1e90ff; /* Azul detalhes */
+}
+
+/* Efeito de partículas no fundo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x) var(--y), 
+                rgba(10, 25, 47, 0.8) 0%, 
+                var(--dark) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Reset e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--light);
-    background: var(--primary);
+    background-color: var(--dark);
+    overflow-x: hidden;
+    cursor: none;
 }
 
+/* Cursor personalizado */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Hero Section */
 .hero {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+    color: var(--light);
     text-align: center;
     padding: 8rem 0;
-    background: linear-gradient(135deg, var(--primary) 0%, #020c1b 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Personalize cores, fontes e espaçamentos aqui */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, var(--dark) 100%);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, var(--light) 0%, var(--secondary) 100%);
+    /* Standard property */
+    background-clip: text;
+    /* Vendor prefixes for compatibility */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    /* Text color fallback and transparent fill */
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    color: var(--secondary);
+}
+
+.social-links {
+    margin-top: 3rem;
+}
+
+.social-links a {
+    color: var(--light);
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary);
+}
+
+.social-links a:hover::after {
+    width: 100%;
+}
+
+/* Seções */
+section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--light);
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--secondary);
+}
+
+/* Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-item {
+    background: rgba(10, 25, 47, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
+}
+
+.skill-bar {
+    background: rgba(204, 214, 246, 0.1);
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.skill-level {
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+/* Projetos */
+.projects-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.project-card {
+    background: rgba(10, 25, 47, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    transition: all 0.6s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--secondary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    border: 1px solid var(--secondary);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.btn:hover {
+    background: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* Rodapé */
+footer {
+    background: var(--primary);
+    color: var(--light);
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero {
+        padding: 5rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .project-card {
+        max-width: 100%;
+    }
+    
+    section {
+        padding: 4rem 0;
+    }
+}
+
+/* Animação do background */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
