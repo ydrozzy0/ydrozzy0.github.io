@@ -7,21 +7,6 @@
     --accent: #1e90ff; /* Azul detalhes */
 }
 
-/* Efeito de partículas no fundo */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at var(--x) var(--y), 
-                rgba(10, 25, 47, 0.8) 0%, 
-                var(--dark) 100%);
-    z-index: -1;
-    pointer-events: none;
-}
-
 /* Reset e Estilos Gerais */
 * {
     margin: 0;
@@ -35,23 +20,9 @@ body {
     color: var(--light);
     background-color: var(--dark);
     overflow-x: hidden;
-    cursor: none;
 }
 
-/* Cursor personalizado */
-.custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--secondary);
-    mix-blend-mode: difference;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-}
-
+/* Container principal */
 .container {
     width: 85%;
     max-width: 1200px;
@@ -83,17 +54,13 @@ body {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, var(--light) 0%, var(--secondary) 100%);
-    /* Standard property */
     background-clip: text;
-    /* Vendor prefixes for compatibility */
     -webkit-background-clip: text;
     -moz-background-clip: text;
-    /* Text color fallback and transparent fill */
     color: transparent;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
 }
-
 
 .hero h2 {
     font-size: 2rem;
@@ -197,10 +164,10 @@ h2::after {
 
 /* Projetos */
 .projects-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    justify-items: center;
 }
 
 .project-card {
@@ -210,31 +177,16 @@ h2::after {
     border: 1px solid rgba(100, 255, 218, 0.1);
     transition: all 0.3s ease;
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     backdrop-filter: blur(5px);
     position: relative;
     overflow: hidden;
-}
-
-.project-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-    transition: all 0.6s ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
     border-color: var(--secondary);
     box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
-}
-
-.project-card:hover::before {
-    left: 100%;
 }
 
 .btn {
@@ -247,19 +199,6 @@ h2::after {
     margin-top: 1.5rem;
     border: 1px solid var(--secondary);
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
-    transition: all 0.6s ease;
 }
 
 .btn:hover {
@@ -267,8 +206,12 @@ h2::after {
     box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
 }
 
-.btn:hover::before {
-    left: 100%;
+/* Contato */
+.contact-info p {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Rodapé */
@@ -290,6 +233,29 @@ footer::before {
     background: linear-gradient(90deg, transparent, var(--secondary), transparent);
 }
 
+/* Cursor personalizado (opcional) */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease-out, background-color 0.2s ease;
+    display: none; /* Inicia oculto */
+}
+
+body.cursor-active {
+    cursor: none;
+}
+
+body.cursor-active .custom-cursor {
+    display: block;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
     .hero {
@@ -304,24 +270,11 @@ footer::before {
         font-size: 1.5rem;
     }
     
-    .project-card {
-        max-width: 100%;
-    }
-    
     section {
         padding: 4rem 0;
     }
-}
-
-/* Animação do background */
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 }
