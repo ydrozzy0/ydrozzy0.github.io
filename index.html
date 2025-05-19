@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arthur Ruiz Garcia | Portfólio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Cursor personalizado (opcional - pode remover se quiser) -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Cabeçalho -->
     <header class="hero">
         <div class="container">
             <h1>Arthur Ruiz Garcia</h1>
@@ -22,16 +26,18 @@
         </div>
     </header>
 
+    <!-- Sobre Mim -->
     <section class="about">
         <div class="container">
             <h2>Sobre Mim</h2>
-            <p>Estudante de Engenharia de Software no UniSenai (7º período) com experiência em Python, HTML, CSS e Excel. Atuei como Assistente Administrativo na True Source, desenvolvendo habilidades em organização, análise de dados e atendimento ao cliente.</p>
+            <p>Estudante de Engenharia de Software no UniSenai (7º período) com experiência em Python, HTML, CSS e Excel. Atuei como Assistente Administrativo na True Source, desenvolvendo habilidades em organização, análise de dados e atendimento ao cliente. Apaixonado por criar soluções tecnológicas elegantes e eficientes.</p>
         </div>
     </section>
 
+    <!-- Habilidades -->
     <section class="skills">
         <div class="container">
-            <h2>Habilidades</h2>
+            <h2>Habilidades Técnicas</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <h3>Python</h3>
@@ -39,27 +45,78 @@
                         <div class="skill-level" style="width: 70%;"></div>
                     </div>
                 </div>
-                <!-- Adicione outras habilidades -->
+                <div class="skill-item">
+                    <h3>HTML/CSS</h3>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 65%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3>Excel</h3>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Projetos -->
     <section class="projects">
         <div class="container">
             <h2>Projetos</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>Sistema de Gestão em Python</h3>
-                    <p>Projeto acadêmico para gerenciamento de estoque.</p>
-                    <a href="#" class="btn">Ver no GitHub</a>
+                    <p>Projeto acadêmico desenvolvido para gerenciamento de estoque com interface intuitiva e relatórios automatizados.</p>
+                    <a href="#" class="btn">Ver Projeto</a>
                 </div>
-                <!-- Adicione mais projetos -->
+                <div class="project-card">
+                    <h3>Portfólio Pessoal</h3>
+                    <p>Website responsivo desenvolvido com HTML, CSS e JavaScript puro.</p>
+                    <a href="#" class="btn">Ver Projeto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Disponível para oportunidades e colaborações:</p>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> arthurruizgarcia@gmail.com</p>
+                <p><i class="fas fa-phone"></i> (41) 99628-2271</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Arthur Ruiz Garcia</p>
+        <p>&copy; 2024 Arthur Ruiz Garcia. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        // Efeito do cursor personalizado (opcional)
+        const cursor = document.querySelector('.custom-cursor');
+        if(cursor) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            const links = document.querySelectorAll('a, .btn');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                    cursor.style.backgroundColor = 'rgba(100, 255, 218, 0.5)';
+                });
+                link.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%)';
+                    cursor.style.backgroundColor = '#64ffda';
+                });
+            });
+        }
+    </script>
 </body>
 </html>
