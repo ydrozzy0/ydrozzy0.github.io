@@ -1,10 +1,10 @@
 /* Variáveis de cor */
 :root {
-    --primary: #0a192f; /* Azul marinho escuro */
-    --secondary: #64ffda; /* Ciano brilhante */
-    --dark: #020c1b; /* Preto azulado */
-    --light: #ccd6f6; /* Azul claro para texto */
-    --accent: #1e90ff; /* Azul detalhes */
+    --primary: #0a192f;
+    --secondary: #64ffda;
+    --dark: #020c1b;
+    --light: #ccd6f6;
+    --accent: #1e90ff;
 }
 
 /* Reset e Estilos Gerais */
@@ -162,50 +162,6 @@ h2::after {
     transition: width 1s ease;
 }
 
-/* Projetos */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    justify-items: center;
-}
-
-.project-card {
-    background: rgba(10, 25, 47, 0.5);
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid rgba(100, 255, 218, 0.1);
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 400px;
-    backdrop-filter: blur(5px);
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--secondary);
-    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
-}
-
-.btn {
-    display: inline-block;
-    background: transparent;
-    color: var(--secondary);
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 1.5rem;
-    border: 1px solid var(--secondary);
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    background: rgba(100, 255, 218, 0.1);
-    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
-}
-
 /* Contato */
 .contact-info p {
     margin: 1rem 0;
@@ -245,7 +201,7 @@ footer::before {
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: transform 0.3s ease-out, background-color 0.2s ease;
-    display: none; /* Inicia oculto */
+    display: none;
 }
 
 body.cursor-active {
@@ -261,20 +217,16 @@ body.cursor-active .custom-cursor {
     .hero {
         padding: 5rem 0;
     }
-    
+
     .hero h1 {
         font-size: 2.2rem;
     }
-    
+
     .hero h2 {
         font-size: 1.5rem;
     }
-    
+
     section {
         padding: 4rem 0;
-    }
-    
-    .projects-grid {
-        grid-template-columns: 1fr;
     }
 }
